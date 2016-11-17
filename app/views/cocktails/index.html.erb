@@ -7,6 +7,15 @@
       <%= link_to "Add a new cocktail", new_cocktail_path %>
       <% @cocktails.each do |cocktail| %>
         <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+          <% unless cocktail.ingredients.blank? %>
+            <% cocktail.ingredients.each do |ingredient| %>
+              <% if ingredient == cocktail.ingredients.last %>
+                <%= ingredient.name %>
+              <% else %>
+                <%= ingredient.name %> |
+              <% end %>
+            <% end %>
+          <% end %>
       <% end %>
     </div>
   </div>

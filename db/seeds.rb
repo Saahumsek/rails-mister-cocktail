@@ -11,6 +11,10 @@ Dose.delete_all
 Cocktail.delete_all
 Ingredient.delete_all
 
-Ingredient.create(name: "lemon")
-Ingredient.create(name: "ice")
-Ingredient.create(name: "mint leaves")
+url = "http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+
+json = JSON.load(open(url))
+
+json["drinks"].each do |drink|
+  Ingredient.create(name: drink["strIngredient1"])
+end
