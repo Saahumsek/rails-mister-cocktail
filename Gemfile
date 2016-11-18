@@ -37,6 +37,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+gem 'figaro'
+
 gem 'rspec-rails', group: [ :test ]
 
 group :development, :test do
