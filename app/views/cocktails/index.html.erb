@@ -4,83 +4,35 @@
 
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <%= link_to "Add a new cocktail", new_cocktail_path %>
-      <% @cocktails.each do |cocktail| %>
-        <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
-          <% unless cocktail.ingredients.blank? %>
-            <% cocktail.ingredients.each do |ingredient| %>
-              <% if ingredient == cocktail.ingredients.last %>
-                <%= ingredient.name %>
-              <% else %>
-                <%= ingredient.name %> |
-              <% end %>
-            <% end %>
-          <% end %>
-      <% end %>
+      <%= link_to "Add a new cocktail", new_cocktail_path %><br><br>
     </div>
   </div>
-</div>
 
-<div class="container">
   <div class="row">
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="track-card">
-        <div class="track-picture">
-
-        </div>
-        <div class="track-description">
-          Hello
-        </div>
-        <div class="track-length">
-          Length
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="track-card">
-        <div class="track-picture">
-
-        </div>
-        <div class="track-description">
-          Hello
-        </div>
-        <div class="track-length">
-          Length
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+          <% if cocktail.photo? %>
+            <%= cl_image_tag cocktail.photo.path, width: 262, height: 300, crop: :fit %>
+          <% end %>
+          <div class="caption">
+            <h3 class="text-center"><%= cocktail.name %></h3>
+            <p>
+              <% unless cocktail.ingredients.blank? %>
+                <% cocktail.ingredients.each do |ingredient| %>
+                  <% if ingredient == cocktail.ingredients.last %>
+                    <%= ingredient.name %> (<%= cocktail.doses.where(ingredient_id: ingredient.id).select(:description) %>)
+                  <% else %>
+                    <%= ingredient.name %> (<%= cocktail.doses.where(ingredient_id: ingredient.id).select(:description) %>) |
+                  <% end %>
+                <% end %>
+              <% end %>
+            </p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="track-card">
-        <div class="track-picture">
-
-        </div>
-        <div class="track-description">
-          Hello
-        </div>
-        <div class="track-length">
-          Length
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="track-card">
-        <div class="track-picture">
-
-        </div>
-        <div class="track-description">
-          Hello
-        </div>
-        <div class="track-length">
-          Length
-        </div>
-      </div>
-    </div>
-
+    <% end %>
   </div>
+
 </div>
-
-
