@@ -12,6 +12,7 @@
     <% @cocktails.each do |cocktail| %>
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <div class="thumbnail">
+    <%= link_to cocktail_path(cocktail) do %>
           <% if cocktail.photo? %>
             <%= cl_image_tag cocktail.photo.path, width: 262, height: 300, crop: :fit %>
           <% end %>
@@ -30,6 +31,7 @@
             </p>
             <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
           </div>
+    <% end %>
         </div>
       </div>
     <% end %>
