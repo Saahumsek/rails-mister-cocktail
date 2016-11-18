@@ -1,0 +1,26 @@
+.track-card {
+  height: 420px;
+  border: 1px solid black;
+  position: relative;
+  margin: 20px 0px;
+  border-radius: 5px;
+}
+
+.track-picture {
+  position: absolute;
+
+}
+
+.track-description {
+  position: absolute;
+  top: 50px;
+
+}
+
+.track-length {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 15px;
+  background-color: #CCCCCC;
+}
